@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Nome do script
-APP_NAME="program installer"
+# Script Name
+APP_NAME="Program Installer"
 VERSION="1.0.0"
 
-# Lista de pacotes a serem instalados
+# List of packages to be installed
 PACKAGES=(
     "curl"
     "git"
@@ -22,36 +22,33 @@ PACKAGES=(
     "gnome-software-plugin-flatpak"
 )
 
-# Função para verificar se o script está sendo executado como root
+# Function to check if the script is running as root
 check_root() {
     if [ "$(id -u)" -ne 0 ]; then
-        echo "Este script deve ser executado com privilégios de superusuário (root)."
+        echo "This script must be run with superuser privileges (root)."
         exit 1
     fi
 }
 
-# Função para atualizar a lista de pacotes e instalar os pacotes
+# Function to update the package list and install packages
 install_packages() {
-    echo "Atualizando a lista de pacotes..."
+    echo "Updating package list..."
     sudo apt update
     
     for package in "${PACKAGES[@]}"; do
-        echo "Instalando $package..."
+        echo "Installing $package..."
         sudo apt install -y "$package"
     done
 
-    echo "Instalação concluída."
+    echo "Installation completed."
 }
 
 main(){
-    # Verifica se o script está sendo executado como root
+    # Check if the script is running as root
     check_root
 
-    # Instalar pacotes
+    # Install packages
     install_packages
-
-    echo "Tudo pronto!"
-
 }
 
 main

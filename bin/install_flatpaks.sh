@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Nome do script
+# Script Name
 APP_NAME="Flatpak Installer"
 VERSION="1.0.0"
 
-# Lista de aplicativos Flatpak a serem instalados
+# List of Flatpak applications to be installed
 FLATPAK_APPS=(
     "com.spotify.Client"
     "org.gimp.GIMP"
@@ -12,55 +12,54 @@ FLATPAK_APPS=(
     "io.mrarm.mcpelauncher"
 )
 
-# Função para verificar se o script está sendo executado como root
+# Function to check if the script is running as root
 check_root() {
     if [ "$(id -u)" -ne 0 ]; then
-        echo "Este script deve ser executado com privilégios de superusuário (root)."
+        echo "This script must be run with superuser privileges (root)."
         exit 1
     fi
 }
 
-# Função para verificar se o Flatpak está instalado
+# Function to check if Flatpak is installed
 check_flatpak() {
     if ! command -v flatpak &>/dev/null; then
-        echo "Flatpak não está instalado. Instalando agora..."
+        echo "Flatpak is not installed. Installing now..."
         sudo apt update && sudo apt install -y flatpak gnome-software-plugin-flatpak
     fi
 }
 
-# Função para adicionar o Flathub como fonte de aplicativos Flatpak
+# Function to add Flathub as a Flatpak source
 add_flathub() {
     if ! flatpak remote-list | grep -q "flathub"; then
-        echo "Adicionando o repositório Flathub..."
+        echo "Adding Flathub repository..."
         flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     else
-        echo "Flathub já está adicionado."
+        echo "Flathub is already added."
     fi
 }
 
-# Função para instalar aplicativos Flatpak
+# Function to install Flatpak applications
 install_flatpak_apps() {
     for app in "${FLATPAK_APPS[@]}"; do
-        echo "Instalando $app..."
+        echo "Installing $app..."
         flatpak install -y flathub "$app"
     done
 }
 
 main(){
-    # Verifica se o script está sendo executado como root
+    # Check if the script is running as root
     check_root
 
-    # Verifica se o Flatpak está instalado
+    # Check if Flatpak is installed
     check_flatpak
 
-    # Adiciona o repositório Flathub se necessário
+    # Add Flathub repository if necessary
     add_flathub
 
-    # Instala os aplicativos Flatpak
+    # Install Flatpak applications
     install_flatpak_apps
 
-    echo "Instalação concluída!"    
+    echo "Installation completed!"    
 }
 
 main
-
