@@ -31,7 +31,9 @@ show_menu() {
     echo "2) Install Programs"
     echo "3) Install Flatpaks"
     echo "4) Install .deb Packages"
-    echo "5) Run All"
+    echo "5) Install Packages Snaps"
+    echo "6) Install Intellij"
+    echo "7) Run All"
     echo "0) Exit"
     read -p "Choose an option: " choice
     case $choice in
@@ -39,7 +41,9 @@ show_menu() {
         2) run_script "install_programs.sh" "Installing programs..." ;;
         3) run_script "install_flatpaks.sh" "Installing Flatpaks..." ;;
         4) run_script "install_programs_debs.sh" "Installing .deb packages..." ;;
-        5) run_all ;;
+        5) run_script "install_programs_snap.sh" "Installing snaps packages..." ;;
+        6) run_script "install_intellij.sh" "Installing Intellij..." ;;
+        7) run_all ;;
         0) echo "Exiting..."; exit 0 ;;
         *) echo "Invalid option!" ;;
     esac
@@ -72,6 +76,7 @@ main() {
     log_info "Starting project: $APP_NAME (v$VERSION)" "$LOG_FILE"
     while true; do
         show_menu
+        echo "" 
     done
 }
 

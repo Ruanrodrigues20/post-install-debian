@@ -1,27 +1,13 @@
 #!/bin/bash
 
 # Script Name
-APP_NAME="Program Installer"
+APP_NAME="Program Installer Snaps"
 VERSION="1.0.0"
 
 # List of packages to be installed
 PACKAGES=(
-    "curl"
-    "git"
-    "vim"
-    "build-essential"
-    "vlc"
-    "python3-pip"
-    "gnome-tweaks"
-    "gnome-shell-extension-manager"
-    "maven"
-    "flatpak"
-    "tree"
-    "dpkg"
-    "wget"
-    "gnome-software-plugin-flatpak"
-    "snap"
-    "snapd"
+    "notion-snap-reborn"
+    "snap-store"
 )
 
 # Function to check if the script is running as root
@@ -33,13 +19,10 @@ check_root() {
 }
 
 # Function to update the package list and install packages
-install_packages() {
-    echo "Updating package list..."
-    sudo apt update
-    
+install_packages() {    
     for package in "${PACKAGES[@]}"; do
         echo "Installing $package..."
-        sudo apt install -y "$package"
+        sudo snap install "$package"
     done
 
     echo "Installation completed."
