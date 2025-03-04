@@ -1,72 +1,70 @@
-# Post Install Debian
+# Post Install Debian  
 
-Bem-vindo ao **POST INSTALL DEBIAN**! Este é um script automatizado para configurar e personalizar sistemas Debian. Ele inclui funções para:
+Welcome to **POST INSTALL DEBIAN**! This is an automated script to set up and customize Debian systems. It includes functions for:  
 
-- Atualização do sistema
-- Instalação de programas essenciais
-- Instalação de Flatpaks
-- Instalação de pacotes `.deb`
-- Instalação do IntelliJ IDEA
+- System update  
+- Installation of essential programs  
+- Installation of Flatpaks  
+- Installation of `.deb` packages  
+- Installation of IntelliJ IDEA  
 
-## Pré-requisitos
+## Prerequisites  
 
-Antes de executar o script, certifique-se de que você tem:
+Before running the script, make sure you have:  
 
-- Acesso root (sudo)
-- Conexão com a internet
-- Dependências essenciais instaladas (como `curl`, `wget`, `apt`, etc.)
+- Root access (sudo)  
+- Internet connection  
+- Essential dependencies installed (such as `curl`, `wget`, `apt`, etc.)  
 
-## Estrutura do Projeto
+## Project Structure  
 
 ```plaintext
-.
 ├── bin
-│   ├── install_flatpaks.sh       # Script para instalar Flatpaks
-│   ├── install_intellij.sh       # Script para instalar o IntelliJ IDEA
-│   ├── install_programs_debs.sh  # Script para instalar pacotes .deb
-│   ├── install_programs.sh       # Script para instalar programas essenciais
-│   └── system_update.sh          # Script para atualizar o sistema
+│   ├── install_flatpaks.sh       # Script to install Flatpaks
+│   ├── install_intellij.sh       # Script to install IntelliJ IDEA
+│   ├── install_programs_debs.sh  # Script to install .deb packages
+│   ├── install_programs.sh       # Script to install essential programs
+│   └── system_update.sh          # Script to update the system
 ├── config
-│   └── settings.conf             # Arquivo de configurações
+│   └── settings.conf             # Configuration file
 ├── lib
-│   └── utils.sh                 # Funções utilitárias
+│   └── utils.sh                 # Utility functions
 ├── logs
-│   └── meu-script.log           # Log de execução do script
-├── LICENSE.txt                  # Arquivo de licença
-├── README.md                    # Este arquivo
-└── install.sh                   # Script de instalacao
-```
+│   └── script.log                # Script execution log
+├── LICENSE.txt                   # License file
+├── README.md                     # This file
+└── install.sh                    # Installation script
+```  
 
-## Como Usar
+## How to Use  
 
-1. Clone o repositório:
+1. Clone the repository:  
    ```bash
    git clone git@github.com:Ruanrodrigues20/post-install-debian.git
    cd post-install-debian
-   ```
+   ```  
 
-2. Torne o script `install.sh` executável:
+2. Make the `install.sh` script executable:  
    ```bash
    chmod +x install.sh
-   ```
+   ```  
 
-3. Execute o script:
+3. Run the script:  
    ```bash
    sudo ./install.sh
-   ```
+   ```  
 
-Isso irá iniciar a configuração do seu sistema com as etapas descritas acima.
+This will start configuring your system with the steps described above.  
 
-## Configurações
+## Configuration  
 
-As configurações do projeto são armazenadas no arquivo `config/settings.conf`. Edite este arquivo para personalizar o comportamento do script, como os diretórios de download e a versão do IntelliJ IDEA a ser instalada.
+The project configurations are stored in the `config/settings.conf` file. Edit this file to customize script behavior, such as download directories and the IntelliJ IDEA version to be installed.  
 
-## Licença
+## License  
 
-Este projeto está licenciado sob a [MIT License](LICENSE.txt).
+This project is licensed under the [MIT License](LICENSE.txt).  
 
-## Contribuição
+## Contribution  
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests para melhorar o projeto.
+Contributions are welcome! Feel free to open issues or pull requests to improve the project.  
 
-```
