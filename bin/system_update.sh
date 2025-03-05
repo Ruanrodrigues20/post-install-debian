@@ -2,6 +2,7 @@
 
 up() {
     sudo apt update && sudo apt upgrade -y
+    sudo apt full-upgrade -y
 }
 
 remove_lock() {
